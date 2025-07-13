@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gift Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: pink;
+            background-image: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3JtMjc4LWJvb20tMTMwLXguanBn.jpg');
+            background-position: center;
+            background-attachment: fixed;
+        }
+        header {
+            background-color: pink;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav {
+            background-color: pink;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        .login-container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .login-container input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container button {
+            width: 100%;
+            background-color: pink;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: rgb(255, 105, 180);
+        }
+        .error-message {
+            color: red;
+            font-size: 16px;
+            margin-top: 10px;
+            display: none;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: pink;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>Customized Gift Store</header>
+    <nav>
+        <a href="signup.html"><u>Sign Up or Register</u></a>
+        <a href="contact.html"><u>Contact</u></a>
+    </nav>
+
+    <form onsubmit="return validateLogin(event)">
+        <div class="login-container">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button><br>
+            <p class="error-message" id="error-message">Invalid username or password!</p>
+            <a href="forgotpass.html">Forgot Password?</a><br><br>
+            <p>Don't have an account? <a href="signup.html">Register</a></p>
+        </div>
+    </form>
+
+    <div class="footer">&copy; 2025 Customized Gift Store</div>
+
+    <script>
+        function validateLogin(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Define correct username and password
+            const correctUsername = "giftstore";
+            const correctPassword = "12345";
+
+            // Get user input
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+
+            // Check if username and password match
+            if (username === correctUsername && password === correctPassword) {
+                alert("Login successful! Redirecting to homepage...");
+                window.location.href = "homepage.html"; // Redirect to homepage
+            } else {
+                errorMessage.style.display = "block"; // Show error message
+            }
+        }
+    </script>
+</body>
+</html>

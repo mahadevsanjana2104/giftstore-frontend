@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products-Customized Gift Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: pink;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav {
+            background-color: pink;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            padding: 8px 12px;
+            transition: background 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background-color: white;
+            color: pink;
+            border-radius: 10px;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+        .product {
+            background-color: white;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .buy-btn {
+            display: inline-block;
+            background-color: pink;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .buy-btn:hover {
+            background-color: rgb(255, 105, 180);
+        }
+        button {
+            background: pink;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: rgb(255, 105,180);
+        }
+        .footer {
+            background-color: pink;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        @media (max-width: 600px) {
+            nav a {
+                display: block;
+                margin: 5px;
+            }
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        #cart {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: pink;
+    color: white;
+    padding: 10px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+#btn {
+background:pink;
+color:white; 
+padding:10px 20px; 
+border:none;
+ border-radius:10px;
+}
+
+#btn:hover {
+    background-color: rgb(255,105,180);
+}
+
+#btn2 {
+    background:pink; 
+    color:white; 
+    padding:10px 20px;
+     border:none; 
+     border-radius:10px;
+}
+
+#btn2:hover {
+    background-color: rgb(255,105,180);
+}
+
+#btn, #btn2 {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Products</h1>
+        <div id="cart" onclick="goToCheckout()" style="position:fixed; top:20px; right:20px; font-size:20px; background:pink; color:white; padding:10px 15px; border-radius:50px; cursor:pointer;">
+    🛒 <span id="cart-count">0</span>
+</div>
+    </header>
+
+
+    <div class="container">
+        <div class="product">
+            <h2><i>CUSTOMIZED MUGS</i></h2>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIQgh-D-NNFmXnJT98-SpRzcSrks-u7GwRwg&s" alt="Gift Item">
+            <h3>Personalized coffee mug with custom text or image.</h3><br>
+            <h4>299 Rupees</h4>
+            <div class="quantity-controls" data-name="Customized Mugs" data-price="299">
+    <button class="minus" style="border-radius:10px;">−</button>
+    <span class="qty">0</span>
+    <button class="plus" style="border-radius:10px;">+</button>
+</div>
+<button class="buy-now buy-btn" data-name="Customized Mugs" data-price="299">Buy Now</button>
+</div>
+
+        <div class="product">
+            <h2><i>WOODEN FRAMES</i></h2>
+            <img src="https://apisap.fabindia.com/medias/20225094-01.jpg?context=bWFzdGVyfGltYWdlc3wxNDQ4MDh8aW1hZ2UvanBlZ3xhR05rTDJoa01TODNPVGd4TlRJMU56WXlNRFV4TUM4eU1ESXlOVEE1TkY4d01TNXFjR2N8YzlhMmFjZGE2ODJjMmJkOGIzMDhhZjVjY2JlYmJjMjlhNDdkYzRkODU2ODBhNzFmZGViNTIzOTNkMDQyNjQ4OA" alt="Gift Item">
+            <h3>Beautiful wooden frame to cherish memories.</h3>
+             <h4>499 Rupees</h4>
+             <div class="quantity-controls" data-name="Photo Frames" data-price="499">
+    <button class="minus" style="border-radius:10px;">−</button>
+    <span class="qty">0</span>
+    <button class="plus" style="border-radius:10px;">+</button>
+</div>
+<button class="buy-now buy-btn" data-name="Photo Frames" data-price="499">Buy Now</button>
+</div>
+
+        <div class="product">
+            <h2><i>CUSTOMIZED T-SHIRTS</i></h2>
+            <img src="https://assets.ajio.com/medias/sys_master/root/20230427/JPVF/64497d9b42f9e729d751f23a/-473Wx593H-466098941-multi-MODEL.jpg" alt="Gift Item">
+            <h3>Unique t-shirt with your favorite design.</h3>
+             <h4>699 Rupees</h4>
+             <div class="quantity-controls" data-name="T-Shirts" data-price="699">
+    <button class="minus" style="border-radius:10px;">−</button>
+    <span class="qty">0</span>
+    <button class="plus" style="border-radius:10px;">+</button>
+</div>
+<button class="buy-now buy-btn" data-name="T-Shirts" data-price="699">Buy Now</button>    
+        </div>
+
+        <div class="product">
+            <h2><i>ENGRAVED NECKLACES</i></h2>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQYc10_dh6UrdrupUGsOzkqkn92NQW6jifZw&s" alt="Gift Item">
+            <h3>Unique necklaces with personalized designs.</h3>
+             <h4>499 Rupees</h4>
+            <div class="quantity-controls" data-name="Engraved Necklaces" data-price="499">
+    <button class="minus" style="border-radius:10px;">−</button>
+    <span class="qty">0</span>
+    <button class="plus" style="border-radius:10px;">+</button>
+</div>
+<button class="buy-now buy-btn" data-name="Engraved Necklaces" data-price="499">Buy Now</button>    
+        </div>
+
+        <div class="product">
+            <h2><i>KEYCHAINS</i></h2>
+            <img src="https://www.giftoo.in/cdn/shop/files/IMAGEYE_3_copy.png?v=1739798471" alt="Gift Item">
+            <h3>Unique Keychains with designs you love.</h3>
+             <h4>299 Rupees</h4>
+            <div class="quantity-controls" data-name="T-Shirts" data-price="699">
+    <button class="minus" style="border-radius:10px;">−</button>
+    <span class="qty">0</span>
+    <button class="plus" style="border-radius:10px;">+</button>
+</div>
+<button class="buy-now buy-btn" data-name="T-Shirts" data-price="699">Buy Now</button>    
+        </div>
+        
+        <div class="product">
+            <h2><i>SCRAPBOOKS</i></h2>
+            <img src="https://thecloakedfox.com/cdn/shop/articles/scrapbook-on-white-textile-3115623.jpg?v=1641665097" alt="Gift Item">
+            <h3>Memories you cherish, in a Scrapbook</h3>
+             <h4>799 Rupees</h4>
+             <div class="quantity-controls" data-name="Scrapbooks" data-price="799">
+    <button class="minus" style="border-radius:10px;">−</button>
+    <span class="qty">0</span>
+    <button class="plus" style="border-radius:10px;">+</button>
+</div>
+<button class="buy-now buy-btn" data-name="Scrapbooks" data-price="799">Buy Now</button>    
+        </div>
+        
+        <div class="product">
+            <h2><i>PHONE CASES</i></h2>
+            <img src="https://i.etsystatic.com/26224468/r/il/4c0759/3458079978/il_570xN.3458079978_tv8w.jpg" alt="Gift Item">
+            <h3>Personalized Phone Cases – Because Your Phone Deserves a Unique Touch!</h3>
+             <h4>599 Rupees</h4>
+              <div class="quantity-controls" data-name="Phone cases" data-price="599">
+    <button class="minus" style="border-radius:10px;">−</button>
+    <span class="qty">0</span>
+    <button class="plus" style="border-radius:10px;">+</button>
+</div>
+<button class="buy-now buy-btn" data-name="Phone cases" data-price="599">Buy Now</button>    
+        </div>
+        
+        <div class="product">
+            <h2><i>MESSAGE IN A BOTTLE</i></h2>
+            <img src="https://thumbs.dreamstime.com/b/woman-gently-holding-jar-filled-colorful-sticky-notes-each-waiting-to-be-used-various-purposes-like-reminders-351991844.jpg" alt="Gift Item">
+            <h3>Seal your love, dreams, or memories in a timeless Message in a Bottle</h3>
+             <h4>799 Rupees</h4>
+             <div class="quantity-controls" data-name="Message in a bottle" data-price="799">
+    <button class="minus" style="border-radius:10px;">−</button>
+    <span class="qty">0</span>
+    <button class="plus" style="border-radius:10px;">+</button>
+</div>
+<button class="buy-now buy-btn" data-name="Message in a bottle" data-price="799">Buy Now</button>    
+        </div>
+    </div>
+
+    <div id="checkout-section" style="display:none; position:fixed; top:50px; right:20px; width:350px; max-height:90vh; overflow-y:auto; background:white; border:2px solid pink; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.2); z-index:1000;">
+    <h3>Your Cart</h3>
+    <ul id="cart-items" style="list-style: none; padding-left: 0;"></ul>
+    <hr>
+    <p><strong>Total: ₹<span id="total-price">0</span></strong></p>
+
+    <h4>Checkout Form</h4>
+    <form onsubmit="event.preventDefault(); alert('Order Placed Successfully!'); closeCheckout();">
+        <label>Name:</label><br>
+        <input type="text" required style="width: 100%; padding: 5px;"><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" required style="width: 100%; padding: 5px;"><br><br>
+
+        <label>Address:</label><br>
+        <textarea required style="width: 100%; padding: 5px;"></textarea><br><br>
+
+        <button id = "btn" type="submit">Place Order</button>
+    </form>
+     <br>
+    <button id = "btn2" onclick="window.location.href='checkout.html'">Go to Checkout Page</button>
+    <br><br>
+    <button onclick="closeCheckout()" style="background:lightgray; color:black; padding:8px 16px; border:none; border-radius:10px;">Close</button>
+
+    <div class="footer">&copy; 2025 Customized Gift Store</div>
+
+  <script>
+    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function saveCart() {
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+    }
+
+    function updateCartCount() {
+        const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById('cart-count').textContent = cartCount;
+    }
+
+    function renderCartItems() {
+        const cartList = document.getElementById("cart-items");
+        const totalPriceSpan = document.getElementById("total-price");
+        cartList.innerHTML = "";
+
+        let total = 0;
+        cartItems.forEach(item => {
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>${item.name}</strong> - ₹${item.price} × ${item.quantity}`;
+            cartList.appendChild(li);
+            total += item.price * item.quantity;
+        });
+
+        totalPriceSpan.textContent = total;
+    }
+
+    function openCartPopup() {
+        document.getElementById("checkout-section").style.display = "block";
+        renderCartItems();
+    }
+
+    function closeCheckout() {
+        document.getElementById("checkout-section").style.display = "none";
+    }
+
+    // Event listener for Add to Cart buttons
+    document.querySelectorAll(".add-to-cart").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const name = btn.dataset.name;
+            const price = parseInt(btn.dataset.price);
+            const existing = cartItems.find(item => item.name === name);
+
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cartItems.push({ name, price, quantity: 1 });
+            }
+
+            saveCart();
+            updateCartCount();
+        });
+    });
+
+    // Event listener for Buy Now buttons
+    document.querySelectorAll(".buy-now").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const name = btn.dataset.name;
+            const price = parseInt(btn.dataset.price);
+
+            let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+            const existing = cartItems.find(item => item.name === name);
+
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cartItems.push({ name, price, quantity: 1 });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cartItems));
+            window.location.href = "checkout.html";
+        });
+    });
+
+    function goToCheckout() {
+        openCartPopup(); // Show cart popup with items
+    }
+
+    updateCartCount();
+
+    // Quantity increment/decrement logic
+document.querySelectorAll('.quantity-controls').forEach(container => {
+    const plusBtn = container.querySelector('.plus');
+    const minusBtn = container.querySelector('.minus');
+    const qtyDisplay = container.querySelector('.qty');
+    const name = container.dataset.name;
+    const price = parseInt(container.dataset.price);
+
+    // Set initial quantity
+    const existing = cartItems.find(item => item.name === name);
+    qtyDisplay.textContent = existing ? existing.quantity : 0;
+
+    plusBtn.addEventListener('click', () => {
+        let existing = cartItems.find(item => item.name === name);
+        if (existing) {
+            existing.quantity += 1;
+        } else {
+            cartItems.push({ name, price, quantity: 1 });
+        }
+        qtyDisplay.textContent = cartItems.find(item => item.name === name).quantity;
+        saveCart();
+        updateCartCount();
+    });
+
+    minusBtn.addEventListener('click', () => {
+        let existing = cartItems.find(item => item.name === name);
+        if (existing && existing.quantity > 0) {
+            existing.quantity -= 1;
+            if (existing.quantity === 0) {
+                cartItems = cartItems.filter(item => item.name !== name);
+            }
+            qtyDisplay.textContent = existing.quantity || 0;
+            saveCart();
+            updateCartCount();
+        }
+    });
+});
+
+</script>
+</body>
+</html>

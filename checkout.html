@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout - Customized Gift Store</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial;
+            background-color: pink;
+            padding: 20px;
+        }
+        h1 {
+            color:rgb(255,105,180);
+        }
+        .cart-item {
+            background: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .cart-item button {
+            margin-left: 10px;
+            background: pink;
+            color: white;
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .total {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        form {
+            margin-top: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            margin: 10px 0;
+            padding: 8px;
+        }
+        button.checkout {
+            background-color: rgb(255,105,180);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+   <form id="checkout-form" onsubmit="placeOrder(event)">
+    <h3 style = "font-style: italic; font-weight: bold;">Customer Details</h3>
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <textarea id="address" placeholder="Shipping Address" required></textarea>
+
+    <h3 style = "font-style: italic; font-weight: bold;">Payment Method</h3>
+    <label><input type="radio" name="payment" value="card" required onchange="showPaymentFields()"> Credit / Debit Card</label><br>
+    <label><input type="radio" name="payment" value="upi" onchange="showPaymentFields()"> UPI</label><br>
+    <label><input type="radio" name="payment" value="cod" onchange="showPaymentFields()"> Cash on Delivery</label>
+
+    <div id="payment-fields" style="margin-top: 10px;"></div>
+
+    <br>
+    <button class="checkout" type="submit">Place Order</button>
+</form>
+
+
+
+<script>
+    function showPaymentFields() {
+        const selected = document.querySelector('input[name="payment"]:checked').value;
+        const container = document.getElementById('payment-fields');
+        container.innerHTML = ''; // Clear previous
+
+        if (selected === 'card') {
+            container.innerHTML = `
+                <input type="text" id="card-number" placeholder="Card Number" required>
+                <input type="text" id="card-name" placeholder="Name on Card" required>
+                <input type="text" id="expiry" placeholder="Expiry Date (MM/YY)" required>
+                <input type="text" id="cvv" placeholder="CVV" required>
+            `;
+        } else if (selected === 'upi') {
+            container.innerHTML = `
+                <input type="text" id="upi-id" placeholder="Enter UPI ID" required>
+            `;
+        }
+        // No fields for COD
+    }
+
+    function placeOrder(e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const address = document.getElementById("address").value.trim();
+        const paymentMethod = document.querySelector('input[name="payment"]:checked');
+
+        if (!name || !email || !address || !paymentMethod) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        const method = paymentMethod.value;
+        if (method === "card") {
+            const cardNumber = document.getElementById("card-number").value.trim();
+            const cardName = document.getElementById("card-name").value.trim();
+            const expiry = document.getElementById("expiry").value.trim();
+            const cvv = document.getElementById("cvv").value.trim();
+
+            if (!cardNumber || !cardName || !expiry || !cvv) {
+                alert("Please enter complete card details.");
+                return;
+            }
+        } else if (method === "upi") {
+            const upi = document.getElementById("upi-id").value.trim();
+            if (!upi) {
+                alert("Please enter UPI ID.");
+                return;
+            }
+        }
+
+        alert("🎉 Order placed successfully with " + method.toUpperCase() + "!");
+        localStorage.removeItem("cart");
+        window.location.href = "products.html";
+    }
+</script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
